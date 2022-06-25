@@ -1,10 +1,10 @@
 package it.polito.tdp.imdb.model;
 
-public class Director {
+public class Director implements Comparable<Director>{
 	Integer id;
 	String firstName;
 	String lastName;
-	
+public int peso;
 	public Director(Integer id, String firstName, String lastName) {
 		super();
 		this.id = id;
@@ -36,34 +36,38 @@ public class Director {
 		this.lastName = lastName;
 	}
 
+	public int getPeso() {
+		return peso;
+	}
+
+	public void setPeso(int peso) {
+		this.peso = peso;
+	}
+
 	@Override
 	public String toString() {
-		return id + " - " + firstName + " " + lastName;
+		return this.getId()+" - "+this.getFirstName()+" "+this.getLastName();
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
+	public int compareTo(Director arg0) {
+		
+		return this.getId().compareTo(arg0.getId());
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Director other = (Director) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
+	public String toString1() {
+		// TODO Auto-generated method stub
+		return this.getId()+" - "+this.getFirstName()+" - "+this.getLastName()+" - "+this.peso;
 	}
+
+	public void setAdiacenza(int pesoGrafo) {
+		this.peso=pesoGrafo;
+		
+	}
+
+
+
+	
+	
 	
 }
